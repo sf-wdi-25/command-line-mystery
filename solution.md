@@ -32,3 +32,5 @@ cd memberships
 cat AAA Musem_of_Bash_History Terminal_City_Library Delta_SkyMiles | grep "Joe Germuska"
 cat AAA Musem_of_Bash_History Terminal_City_Library Delta_SkyMiles | grep "Jeremy Bowers"
 cat AAA Museum_of_Bash_History Terminal_City_Library Delta_SkyMiles | grep "Jeremy Bowers"
+
+Jeremy Bowers is the most likely suspect
