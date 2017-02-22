@@ -1,63 +1,70 @@
-```zsh
-# Clone the initial repository
-git clone git@github.com:eerwitt/command-line-mystery.git
-cd command-line-mystery
+// Search crimescene 
+ $ grep "CLUE" crimescene 
 
-# Check the status to see if anything is already marked as new (shouldn't be)
-git status
+// Researched Annabel
+ $ grep "Annabel" people
 
-# Edit my solution file
-subl solution.md
+// Researched Ms. Sun
+ $ grep -r "Annabel Sun" *
 
-# Commit initial solution
-git add solution.md
-git commit -a
+// Researched Ms. Church
+ $ grep -r "Annabel Church" *
 
-# Start reading the instructions
-less instructions
+// Visited Ms. Church
+ $ less +179 streets/Buckingham_Place 
 
-# Check for clues in the mystery
-cd mystery
-grep CLUE ./crimescene
+// Interviewed Ms. Church
+ $ less interviews/interview-699607 
+// Car: blue Honda, license plate "L337..9"
 
-# Search for person with the Latte
-grep Annabel ./people
+// cross refferenced blue honda w/ license plate.
+ $ less vehicles
+ /L337..9
+// L337DV9, Blue Honda, Joe Germuska, 6'2", 164 lbs? Possibly
+// L3375A9, Blue Honda, Jeremy Bowers, 6'1", 204 lbs? Possibly
+// L337WR9, Blue Honda, Jacqui Maher, 6'2", 130 lbs? Possibly
 
-# Knock on her door
-less streets/Mattapan_Street
-# Goto line in file using less: http://stackoverflow.com/questions/8586648/going-to-a-specific-line-number-using-less-in-unix
-# in less type 173g
-# Try different interviews
-less interviews/interview-47246024
+// Research possible suspects.
+$ grep -r "Joe Germuska" *
+// memberships/Terminal_City_Library:Joe Germuska
+// memberships/AAA:Joe Germuska
+// people:Joe Germuska	M	65	Plainfield Street, line 275
+// vehicles:Owner: Joe Germuska
 
-less interviews/interview-699607
+$ grep -r "Jeremy Bowers" *
+//memberships/Museum_of_Bash_History:Jeremy Bowers
+//memberships/Terminal_City_Library:Jeremy Bowers
+//memberships/AAA:Jeremy Bowers
+//memberships/Delta_SkyMiles:Jeremy Bowers
+//people:Jeremy Bowers	M	34	Dunstable Road, line 284
+//vehicles:Owner: Jeremy Bowers
 
-# Checking for vehicle
-less vehicles
-# Search in less for vehicles starting with L337 and ending in 9
-# in less /L337..9
-# Check which are over 6'
-# Katie Park
-# Mike Bostock
-# John Keefe
-# Erika Owens
-# Matt Waite
-# Brian Boyer
-# Al Shaw
-# Miranda Mulligan
-# Joe Germuska
-# Jeremy Bowers
-# Jacqui Maher
+$ grep -r "Jacqui Maher" *
+//memberships/Museum_of_Bash_History:Jacqui Maher
+//memberships/Terminal_City_Library:Jacqui Maher
+//memberships/AAA:Jacqui Maher
+//memberships/Delta_SkyMiles:Jacqui Maher
+//people:Jacqui Maher	F	40	Andover Road, line 224
+//vehicles:Owner: Jacqui Maher
 
-# Check which is male/female and get their names
-egrep '((Katie Park)|(Mike Bostock)|(John Keefe)|(Erika Owens)|(Matt Waite)|(Brian Boyer)|(Al Shaw)|(Miranda Mulligan)|(Joe Germuska)|(Jeremy Bowers)|(Jacqui Maher))' ./people | grep '\tM\t' | cut -f1
+// 2 suspects: Jacqui Maher and Jeremy Bowers
+$ less +284 streets/Dunstable_Road 
+// SEE INTERVIEW #9620713
 
-# Limit down by membership
-egrep -R '((Joe Germuska)|(Brian Boyer)|(Mike Bostock)|(Jeremy Bowers)|(John Keefe)|(Al Shaw)|(Matt Waite))' ./memberships
+$ less interviews/interview-9620713
+// Not home, fled? guilty?
 
-# (Jeremy Bowers)|(Brian Boyer)|(Mike Bostock)|(Matt Waite)
-# Not MB, wrong car color
-# Not MW, wrong car manufacturer
-# Not BB, wrong car manufacturer
-# JB, it is JB
-```
+$ less +224 streets/Andover_Road
+// SEE INTERVIEW #904020
+
+$ less interviews/interview-904020
+// Suspect eliminated
+
+// Don't believe he's our guy but better safe than sorry.
+$ less +275 streets/Plainfield_Street
+// SEE INTERVIEW #29741223
+
+$ less interviews/interview-29741223
+// suspect eliminated
+
+|| CULPRIT: Jeremy Bowers ||
