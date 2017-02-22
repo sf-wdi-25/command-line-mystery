@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-1. Fork this repo, and clone it into your `dev` folder on your local machine.
+1. Fork this repo, and clone it into your `wdi` folder on your local machine.
 
 2. Change directories into `command-line-mystery`:
 
@@ -29,7 +29,7 @@
 ## Submission
 
 * As you make changes to `solution.md`, frequently commit and push to GitHub.
-* Once you've finished the assignment and pushed your work to GitHub, make a pull request from your fork to the original repo.
+* Once you've finished the assignment and pushed your work to GitHub, make a pull request from your fork to the original repo. You can find instructions for this [here](https://github.com/SF-WDI-LABS/shared_modules/blob/master/how-to/submit-homework.md).
 
 ## Resources
 
